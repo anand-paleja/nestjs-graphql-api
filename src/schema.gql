@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Player {
+  """Unique player id"""
+  id: String!
+
+  """Player name"""
+  name: String!
+
+  """Player height"""
+  height: String!
+
+  """Player weight"""
+  weight: Float!
+
+  """Player hometown"""
+  hometown: String!
+  stats: [Stats!]
+  created_at: DateTime!
+  updated_at: DateTime!
+  isRookie: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Stats {
+  """Unique stats id"""
+  id: String!
+
+  """Stats Season"""
+  season: String!
+
+  """Average Points Per Game"""
+  points: Float!
+
+  """Average Rebounds Per Game"""
+  rebounds: Float!
+
+  """Average Assists Per Game"""
+  assists: Float!
+  player: Player!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Query {
+  players: [Player!]!
+  player(id: String!): Player
+}
+
+type Mutation {
+  createPlayer(createPlayerInput: CreatePlayerInput!): Player!
+  updatePlayer(updatePlayerInput: UpdatePlayerInput!): Player!
+  removePlayer(id: String!): Player!
+}
+
+input CreatePlayerInput {
+  """Player name"""
+  name: String!
+
+  """Player height"""
+  height: String!
+
+  """Player weight"""
+  weight: Int!
+
+  """Player hometown"""
+  hometown: String!
+  stats: [CreateStatsInput!]
+}
+
+input CreateStatsInput {
+  """Stats Season"""
+  season: String!
+
+  """Average Points Per Game"""
+  points: Float!
+
+  """Average Rebounds Per Game"""
+  rebounds: Float!
+
+  """Average Assists Per Game"""
+  assists: Float!
+}
+
+input UpdatePlayerInput {
+  """Player name"""
+  name: String
+
+  """Player height"""
+  height: String
+
+  """Player weight"""
+  weight: Int
+
+  """Player hometown"""
+  hometown: String
+  id: String!
+}

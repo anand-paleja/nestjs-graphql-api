@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { PlayersService } from './players.service';
+import { PlayersResolver } from './players.resolver';
+import { StatsService } from './stats.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Player } from './models/player.model';
+import { Stats } from './models/stats.model';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([Player, Stats])],
+  providers: [PlayersResolver, PlayersService, StatsService]
+})
+export class PlayersModule {}
