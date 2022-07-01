@@ -2,6 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type CareerAverage {
+  """Average Points"""
+  points: Float
+
+  """Average Rebounds"""
+  rebounds: Float
+
+  """Average Assists"""
+  assists: Float
+}
+
 type Player {
   """Unique player id"""
   id: String!
@@ -17,10 +28,14 @@ type Player {
 
   """Player hometown"""
   hometown: String!
+
+  """Player stats by season"""
   stats: [Stats!]
   created_at: DateTime!
   updated_at: DateTime!
-  isRookie: Boolean!
+
+  """Player career average"""
+  careerAverage: CareerAverage
 }
 
 """
@@ -51,6 +66,7 @@ type Stats {
 type Query {
   players: [Player!]!
   player(id: String!): Player
+  hallOfFameCandidates: [Player!]
 }
 
 type Mutation {
@@ -71,6 +87,8 @@ input CreatePlayerInput {
 
   """Player hometown"""
   hometown: String!
+
+  """Player stats by season"""
   stats: [CreateStatsInput!]
 }
 
