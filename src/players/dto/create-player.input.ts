@@ -1,6 +1,5 @@
 import { InputType, Int, Field, Float } from '@nestjs/graphql';
 
-// TODO: move this to a new file
 @InputType()
 export class CreateStatsInput {
   @Field({ description: 'Stats Season' })

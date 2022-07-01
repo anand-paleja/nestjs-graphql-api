@@ -66,7 +66,6 @@ export class PlayersService {
         newPlayer.stats.push(newPlayerStats);
       });
     }
-    console.log(newPlayer);
 
     return this.playerRepository.save(newPlayer);
   }
