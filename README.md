@@ -10,6 +10,9 @@ Manages basketball players and their stats.
 $ pnpm install
 ```
 
+## Setup
+Add a .env file to set the database properties ( postgres ).  An example is provided for you (.env.example)
+
 ## Running the app
 
 ```bash
