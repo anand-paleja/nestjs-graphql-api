@@ -29,7 +29,7 @@ import { validate } from './config.validation';
           host: config.get('DB_HOST'),
           port: dbPort,
           username: config.get('DB_USERNAME'),
-          password: config.get('DB_PASSWORD').toString(),
+          password: config.get('DB_PASSWORD'),
           database: config.get('DB_NAME'),
           entities: ['dist/**/*.model.js'],
           synchronize: true,

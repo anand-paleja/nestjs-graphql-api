@@ -11,36 +11,60 @@ export class PlayersResolver {
   constructor(
     private readonly playersService: PlayersService,
     private readonly statsService: StatsService) {}
-
+  
+  /**
+   * Get all players
+   */
   @Query(() => [Player], { name: 'players' })
   async findAll() {
-    return await this.playersService.findAll();
+    return this.playersService.findAll();
   }
 
+  /**
+   * Get a player by id
+   * @param id - player id   
+   */
   @Query(() => Player, { name: 'player', nullable: true })
   async findOne(@Args('id') id: string) {
-    return await this.playersService.findOne(id);
+    return this.playersService.findOne(id);
   }
 
+  /**
+   * Player stats resolver
+   * @param player    
+   */
   @ResolveField(returns => [Stats])
   async stats(@Parent() player) {
-    return await this.statsService.findByPlayer(player);
+    return this.statsService.findByPlayer(player);
   }
 
+  /**
+   * Create a player
+   * @param createPlayerInput - create player data   
+   */
   @Mutation(() => Player)
   createPlayer(@Args('createPlayerInput') createPlayerInput: CreatePlayerInput) {
     return this.playersService.create(createPlayerInput);
   }
 
+  /**
+   * Update a player
+   * @param updatePlayerInput - update player data   
+   */
   @Mutation(() => Player)
   updatePlayer(@Args('updatePlayerInput') updatePlayerInput: UpdatePlayerInput) {
     return this.playersService.update(updatePlayerInput.id, updatePlayerInput);
   }
 
+  /**
+   * Removes a player
+   * @param id - player id   
+   */
   @Mutation(() => Player)
   async removePlayer(@Args('id') id: string) {
+    // get the player first, so we can return it after removing
     const removedPlayer = await this.playersService.findOne(id);
-    this.playersService.remove(removedPlayer);
+    this.playersService.remove(removedPlayer);    
     return removedPlayer;
   }
 }

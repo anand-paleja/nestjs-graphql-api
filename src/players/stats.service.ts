@@ -11,6 +11,10 @@ export class StatsService {
         private statsRepository: Repository<Stats>,
       ) {}
 
+    /**
+     * Get a player's stats
+     * @param player      
+     */
     findByPlayer(player: Player) {
         return this.statsRepository.findBy( { player: {id: player.id} });         
     }
