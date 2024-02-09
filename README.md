@@ -11,7 +11,7 @@ $ pnpm install
 ```
 
 ## Setup
-Add a .env file to set the database properties ( postgres ).  An example is provided for you (.env.example)
+Add an .env file to set the database properties ( postgres ).  An example is provided for you (.env.example)
 
 ## Running the app
 
